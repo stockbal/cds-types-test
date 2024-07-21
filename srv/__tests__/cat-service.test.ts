@@ -139,11 +139,6 @@ describe("Test 'req.data' character in Service Handlers", () => {
       expect(ReqDataLogger.instance.afterReadBooksIsArray).toBe(true);
     });
 
-    it('req.data in after("READ", Books) is an array', async () => {
-      await GET("/odata/v4/catalog/Books");
-      expect(ReqDataLogger.instance.afterReadBooksIsArray).toBe(true);
-    });
-
     it('req.data in after("READ", Books) for single READ is an array', async () => {
       await GET(`/odata/v4/catalog/Books(ID=${book1.ID},IsActiveEntity=true)`);
       expect(ReqDataLogger.instance.afterReadBooksIsArray).toBe(true);
