@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "useDefineForClassFields": false,
+    "noImplicitUseStrict": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "outDir": "./gen/srv",
+    "paths": {
+      "#cds-models/*": ["./@cds-models/*/index.ts"]
+    }
+  },
+  "include": ["srv"]
+}

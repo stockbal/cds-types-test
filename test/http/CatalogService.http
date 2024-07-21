@@ -1,0 +1,68 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic alice:
+
+
+### CatalogService.Books
+GET {{server}}/odata/v4/catalog/Books
+Content-Type: application/json
+# {{auth}}
+
+
+### CatalogService.Books Drafts 
+GET {{server}}/odata/v4/catalog/Books?$filter=(IsActiveEntity eq true)
+Content-Type: application/json
+# {{auth}}
+
+
+### CatalogService.Books Drafts 
+POST {{server}}/odata/v4/catalog/Books
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "8500844b-4866-4a6c-b5ca-b1f6e7b84827",
+  "title": "title-850084"
+}
+
+
+### Please paste the server-generated draft id here e.g. ID=101 or ID=101,secodKey='stringValue' 
+@draftID = ID=8500844b-4866-4a6c-b5ca-b1f6e7b84827
+
+### CatalogService.Books Read Draft
+GET {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=false)
+{{auth}}
+
+### CatalogService.Books Patch Draft 
+PATCH {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+{{auth}}
+
+{
+  "title": "title-850084"
+}
+
+### CatalogService.Books Edit Draft
+POST {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=true)/draftEdit
+Content-Type: application/json
+{{auth}}
+
+{}
+
+### CatalogService.Books Prepare Draft 
+POST {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=false)/draftPrepare
+Content-Type: application/json
+{{auth}}
+
+{}
+
+
+### CatalogService.Books Activate Draft 
+POST {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=false)/draftActivate
+Content-Type: application/json
+{{auth}}
+
+{}
+
+### CatalogService.Books Delete
+DELETE {{server}}/odata/v4/catalog/Books({{draftID}},IsActiveEntity=true)
+{{auth}}
