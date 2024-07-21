@@ -201,5 +201,13 @@ describe("Test 'req.data' character in Service Handlers", () => {
       await GET(`/odata/v4/catalog/Books(ID=${book1.ID},IsActiveEntity=false)`);
       expect(ReqDataLogger.instance.afterReadBookDraftsIsArray).toBe(true);
     });
+
+    it('req.data in after("each", Books.drafts) is an array', async () => {
+      await POST(
+        `/odata/v4/catalog/Books(ID=${book1.ID},IsActiveEntity=true)/draftEdit`
+      );
+      await GET(`/odata/v4/catalog/Books(ID=${book1.ID},IsActiveEntity=false)`);
+      expect(ReqDataLogger.instance.afterReadBookDraftsIsArray).toBe(true);
+    });
   });
 });
