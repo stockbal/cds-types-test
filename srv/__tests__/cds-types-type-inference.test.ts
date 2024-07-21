@@ -2,7 +2,7 @@ import type { Book } from "#cds-models/CatalogService";
 import cds from "@sap/cds";
 import { ReqDataLogger } from "../handler-util";
 
-describe("Test 'req.data' character in Service Handlers", () => {
+describe("Test 'req.data' character in Service Handlers (Type inference expectation)", () => {
   const { data, GET, POST, PATCH } = cds
     .test("serve", "--with-mocks")
     .in(`${__dirname}/../..`);

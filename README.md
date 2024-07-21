@@ -23,6 +23,21 @@ Currently the `.before`, `.on` and `.after` handlers are being tested to see if 
 | @sap/eslint-plugin-cds | 3.0.4    |
 | Node.js                | v18.20.2 |
 
-## Handler type inference test results
+## Handler tests
 
-![Jest Test Results](docs/jest-test-results.png)
+### Test results for expected types through type inference
+
+These tests assume the inferred type for each handler registration is correct
+
+e.g. Intellisense for `.before("CREATE", Books)` shows that `req.data` is of type `Book[]`  
+![alt text](docs/handler-reg-sample.png)
+
+but, the test of the actual type of `req.data` show that a single object was received, not an array.
+
+![](docs/jest-test-results.png)
+
+### Test results for expected types through runtime
+
+The following tests show that most of the time the received type in `req.data` is a single object, not an array, which makes sense because CRUD operations normally operate on a single entry.
+
+![](docs/runtime-types-expectation-test-results.png)

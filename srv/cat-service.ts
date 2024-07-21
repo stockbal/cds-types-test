@@ -107,7 +107,7 @@ export default class CatalogService extends ApplicationService {
       ReqDataLogger.instance.afterReadBookDraftsIsArray = Array.isArray(data);
     });
     this.after("each", Books.drafts, (data) => {
-      ReqDataLogger.instance.afterReadBookDraftsIsArray = Array.isArray(data);
+      ReqDataLogger.instance.afterEachBookDraftsIsArray = Array.isArray(data);
     });
     return super.init();
   }

@@ -5,14 +5,18 @@
 ### CatalogService.Books
 GET {{server}}/odata/v4/catalog/Books
 Content-Type: application/json
-# {{auth}}
+{{auth}}
 
 
-### CatalogService.Books Drafts 
+### CatalogService.Books Actives
 GET {{server}}/odata/v4/catalog/Books?$filter=(IsActiveEntity eq true)
 Content-Type: application/json
-# {{auth}}
+{{auth}}
 
+### CatalogService.Books Drafts
+GET {{server}}/odata/v4/catalog/Books?$filter=(IsActiveEntity eq false)
+Content-Type: application/json
+{{auth}}
 
 ### CatalogService.Books Drafts 
 POST {{server}}/odata/v4/catalog/Books
